@@ -1,13 +1,20 @@
 package com.jacobcadena.didemo.controllers;
 
+import com.jacobcadena.didemo.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String hello(){
-        System.out.println("Hello");
+    private GreetingService greetingService;
 
-        return "hello";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String hello(){
+        System.out.println("Hello - My Controller");
+
+        return greetingService.sayGreeting();
     }
 }
